@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types'
 import { format } from 'date-fns'
 import { useState } from 'react'
-import {
-  Description,
-  Dialog,
-  DialogPanel,
-  DialogTitle,
-} from '@headlessui/react'
+// import {
+//   Description,
+//   Dialog,
+//   DialogPanel,
+//   DialogTitle,
+// } from '@headlessui/react'
 import DeleteModal from '../../Modal/DeleteModal'
 import UpdateRoomModal from '../../Modal/UpdateRoomModal'
 const RoomDataRow = ({ room, handleDelete, refetch }) => {
@@ -20,14 +20,14 @@ const RoomDataRow = ({ room, handleDelete, refetch }) => {
   // for update modal
   return (
     <tr>
-      <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+      <td className='px-5 py-5 text-sm bg-white border-b border-gray-200'>
         <div className='flex items-center'>
           <div className='flex-shrink-0'>
-            <div className='block relative'>
+            <div className='relative block'>
               <img
                 alt='profile'
                 src={room?.image}
-                className='mx-auto object-cover rounded h-10 w-15 '
+                className='object-cover h-10 mx-auto rounded w-15 '
               />
             </div>
           </div>
@@ -36,30 +36,30 @@ const RoomDataRow = ({ room, handleDelete, refetch }) => {
           </div>
         </div>
       </td>
-      <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+      <td className='px-5 py-5 text-sm bg-white border-b border-gray-200'>
         <p className='text-gray-900 whitespace-no-wrap'>{room?.location}</p>
       </td>
-      <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+      <td className='px-5 py-5 text-sm bg-white border-b border-gray-200'>
         <p className='text-gray-900 whitespace-no-wrap'>${room?.price}</p>
       </td>
-      <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+      <td className='px-5 py-5 text-sm bg-white border-b border-gray-200'>
         <p className='text-gray-900 whitespace-no-wrap'>
           {format(new Date(room?.from), 'P')}
         </p>
       </td>
-      <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+      <td className='px-5 py-5 text-sm bg-white border-b border-gray-200'>
         <p className='text-gray-900 whitespace-no-wrap'>
           {format(new Date(room?.to), 'P')}
         </p>
       </td>
-      <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+      <td className='px-5 py-5 text-sm bg-white border-b border-gray-200'>
         <button
           onClick={() => setIsOpen(true)}
-          className='relative cursor-pointer inline-block px-3 py-1 font-semibold text-green-900 leading-tight'
+          className='relative inline-block px-3 py-1 font-semibold leading-tight text-green-900 cursor-pointer'
         >
           <span
             aria-hidden='true'
-            className='absolute inset-0 bg-red-200 opacity-50 rounded-full'
+            className='absolute inset-0 bg-red-200 rounded-full opacity-50'
           ></span>
           <span className='relative'>Delete</span>
         </button>
@@ -71,14 +71,14 @@ const RoomDataRow = ({ room, handleDelete, refetch }) => {
           id={room?._id}
         />
       </td>
-      <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+      <td className='px-5 py-5 text-sm bg-white border-b border-gray-200'>
         <button
           onClick={() => setIsEditModalOpen(true)}
-          className='relative cursor-pointer inline-block px-3 py-1 font-semibold text-green-900 leading-tight'
+          className='relative inline-block px-3 py-1 font-semibold leading-tight text-green-900 cursor-pointer'
         >
           <span
             aria-hidden='true'
-            className='absolute inset-0 bg-green-200 opacity-50 rounded-full'
+            className='absolute inset-0 bg-green-200 rounded-full opacity-50'
           ></span>
           <span className='relative'>Update</span>
         </button>

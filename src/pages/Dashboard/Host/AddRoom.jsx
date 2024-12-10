@@ -23,6 +23,7 @@ const AddRoom = () => {
 
   //Date range handler
   const handleDates = item => {
+    console.log(item)
     setDates(item.selection)
   }
 
@@ -43,9 +44,9 @@ const AddRoom = () => {
   const handleSubmit = async e => {
     e.preventDefault()
     setLoading(true)
-    const form = e.target
-    const location = form.location.value
-    const category = form.category.value
+    const form = e.target;
+    const location = form.location.value;
+    const category = form.category.value;
     const title = form.title.value
     const to = dates.endDate
     const from = dates.startDate
@@ -55,7 +56,6 @@ const AddRoom = () => {
     const description = form.description.value
     const bedrooms = form.bedrooms.value
     const image = form.image.files[0]
-
     const host = {
       name: user?.displayName,
       image: user?.photoURL,
@@ -79,7 +79,6 @@ const AddRoom = () => {
         image: image_url,
       }
       console.table(roomData)
-
       //   Post request to server
       await mutateAsync(roomData)
     } catch (err) {

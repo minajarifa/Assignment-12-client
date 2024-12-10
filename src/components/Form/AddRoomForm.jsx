@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { categories } from '../Categories/CategoriesData'
 import { DateRange } from 'react-date-range'
 import { TbFidgetSpinner } from 'react-icons/tb'
@@ -5,7 +6,7 @@ const AddRoomForm = ({
   dates,
   handleDates,
   handleSubmit,
-  setImagePreview,
+  // setImagePreview,
   imagePreview,
   imageText,
   handleImage,
@@ -14,14 +15,14 @@ const AddRoomForm = ({
   return (
     <div className='w-full min-h-[calc(100vh-40px)] flex flex-col justify-center items-center text-gray-800 rounded-xl bg-gray-50'>
       <form onSubmit={handleSubmit}>
-        <div className='grid grid-cols-1 lg:grid-cols-2 gap-10'>
+        <div className='grid grid-cols-1 gap-10 lg:grid-cols-2'>
           <div className='space-y-6'>
             <div className='space-y-1 text-sm'>
               <label htmlFor='location' className='block text-gray-600'>
                 Location
               </label>
               <input
-                className='w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md '
+                className='w-full px-4 py-3 text-gray-800 border rounded-md border-rose-300 focus:outline-rose-500 '
                 name='location'
                 id='location'
                 type='text'
@@ -36,7 +37,7 @@ const AddRoomForm = ({
               </label>
               <select
                 required
-                className='w-full px-4 py-3 border-rose-300 focus:outline-rose-500 rounded-md'
+                className='w-full px-4 py-3 rounded-md border-rose-300 focus:outline-rose-500'
                 name='category'
               >
                 {categories.map(category => (
@@ -67,7 +68,7 @@ const AddRoomForm = ({
                 Title
               </label>
               <input
-                className='w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md '
+                className='w-full px-4 py-3 text-gray-800 border rounded-md border-rose-300 focus:outline-rose-500 '
                 name='title'
                 id='title'
                 type='text'
@@ -76,12 +77,12 @@ const AddRoomForm = ({
               />
             </div>
 
-            <div className=' p-4 bg-white w-full  m-auto rounded-lg flex justify-between items-center'>
-              <div className='file_upload px-5 py-3 relative border-4 border-dotted border-gray-300 rounded-lg'>
-                <div className='flex flex-col w-max mx-auto text-center'>
+            <div className='flex items-center justify-between w-full p-4 m-auto bg-white rounded-lg '>
+              <div className='relative px-5 py-3 border-4 border-gray-300 border-dotted rounded-lg file_upload'>
+                <div className='flex flex-col mx-auto text-center w-max'>
                   <label>
                     <input
-                      className='text-sm cursor-pointer w-36 hidden'
+                      className='hidden text-sm cursor-pointer w-36'
                       type='file'
                       onChange={e => handleImage(e.target.files[0])}
                       name='image'
@@ -89,18 +90,18 @@ const AddRoomForm = ({
                       accept='image/*'
                       hidden
                     />
-                    <div className='bg-rose-500 text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-rose-500'>
+                    <div className='p-1 px-3 font-semibold text-white border border-gray-300 rounded cursor-pointer bg-rose-500 hover:bg-rose-500'>
                       {/* {imageText} */}
                       {imageText.length > 20
                         ? imageText.split('.')[0].slice(0, 15) +
-                          '....' +
-                          imageText.split('.')[1]
+                        '....' +
+                        imageText.split('.')[1]
                         : imageText}
                     </div>
                   </label>
                 </div>
               </div>
-              <div className='h-16 w-16 object-cover overflow-hidden flex items-center'>
+              <div className='flex items-center object-cover w-16 h-16 overflow-hidden'>
                 {imagePreview && <img src={imagePreview} />}
               </div>
             </div>
@@ -110,7 +111,7 @@ const AddRoomForm = ({
                   Price
                 </label>
                 <input
-                  className='w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md '
+                  className='w-full px-4 py-3 text-gray-800 border rounded-md border-rose-300 focus:outline-rose-500 '
                   name='price'
                   id='price'
                   type='number'
@@ -124,7 +125,7 @@ const AddRoomForm = ({
                   Total guest
                 </label>
                 <input
-                  className='w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md '
+                  className='w-full px-4 py-3 text-gray-800 border rounded-md border-rose-300 focus:outline-rose-500 '
                   name='total_guest'
                   id='guest'
                   type='number'
@@ -140,7 +141,7 @@ const AddRoomForm = ({
                   Bedrooms
                 </label>
                 <input
-                  className='w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md '
+                  className='w-full px-4 py-3 text-gray-800 border rounded-md border-rose-300 focus:outline-rose-500 '
                   name='bedrooms'
                   id='bedrooms'
                   type='number'
@@ -154,7 +155,7 @@ const AddRoomForm = ({
                   Bathrooms
                 </label>
                 <input
-                  className='w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md '
+                  className='w-full px-4 py-3 text-gray-800 border rounded-md border-rose-300 focus:outline-rose-500 '
                   name='bathrooms'
                   id='bathrooms'
                   type='number'
@@ -171,7 +172,7 @@ const AddRoomForm = ({
 
               <textarea
                 id='description'
-                className='block rounded-md focus:rose-300 w-full h-32 px-4 py-3 text-gray-800  border border-rose-300 focus:outline-rose-500 '
+                className='block w-full h-32 px-4 py-3 text-gray-800 border rounded-md focus:rose-300 border-rose-300 focus:outline-rose-500 '
                 name='description'
               ></textarea>
             </div>
@@ -181,10 +182,10 @@ const AddRoomForm = ({
         <button
           disabled={loading}
           type='submit'
-          className='w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-rose-500'
+          className='w-full p-3 mt-5 font-medium text-center text-white transition duration-200 rounded shadow-md bg-rose-500'
         >
           {loading ? (
-            <TbFidgetSpinner className='animate-spin m-auto' />
+            <TbFidgetSpinner className='m-auto animate-spin' />
           ) : (
             ' Save & Continue'
           )}
